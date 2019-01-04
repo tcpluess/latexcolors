@@ -1,8 +1,867 @@
-\NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{latexcolors}[2016/04/08 LaTeX Color Definitions]
-\RequirePackage{xcolor}
+% \iffalse meta-comment
+%
+% Copyright (C) 2019 by Tobias Plüss <tpluess@ieee.org>
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3 of this license or (at your option) any later
+% version.  The latest version of this license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of
+% LaTeX version 2005/12/01 or later.
+%
+% \fi
+%
+% \iffalse
+%<package>\NeedsTeXFormat{LaTeX2e}[2011/06/27]
+%<package>\ProvidesPackage{latexcolors}
+%<package>  [2019/01/04 v0.1 xcolor definitions for the colors on latexcolor.com]
+%
+%<*driver>
+\documentclass[a4paper]{ltxdoc}
+\RecordChanges
 
-% see http://latexcolor.com/
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{latexcolors}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{cleveref}
+\usepackage{multicol}
+\usepackage{amssymb}
+
+\DeclareUrlCommand\email{\urlstyle{tt}}
+
+\newcommand*{\pkg}[1]{\textsf{#1}}
+\newcommand*{\opt}[1]{\texttt{#1}}
+\newcommand{\colorsquare}[1]{\noindent {\color{#1} $\blacksquare$} {\scriptsize\ttfamily\detokenize{#1}} \\}
+
+\begin{document}
+  \DocInput{latexcolors.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{765}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v0.1}{2019/01/04}{Submission to CTAN}
+%
+% \GetFileInfo{latexcolors.sty}
+%
+% \title{The \texttt{latexcolors} package\thanks{This document corresponds to \texttt{latexcolors}~\fileversion, dated~\filedate.}}
+% \author{Tobias Plüss}
+% \date{\filedate}
+% \thispagestyle{empty}
+% \maketitle
+%
+% \begin{abstract}
+%   Built on top of the \verb|xcolor| package, the \verb|latexcolors| package
+%   defines the set of colors shown on \href{http://latexcolor.com}{latexcolor.com}, for use in
+%   documents typeset with \LaTeX{} \& friends.
+% \end{abstract}
+%
+% \tableofcontents
+%
+% \PrintChanges
+%
+% \StopEventually{}
+%
+%
+% \section{Package dependencies}
+% The \verb|latexcolors| package depends on the \verb|xcolor| package. It
+% automatically loads \verb|xcolor| without any options.
+%
+% \section{List of defined colors}
+% The list below shows all the colors defined by \verb|latexcolors| with their
+% names. To use one of the colors, simply use \verb|\color{<name>}| where
+% \verb|<name>| is one of the color names listed below.
+% \begin{multicols}{3}
+% \colorsquare{airforceblue}
+% \colorsquare{aliceblue}
+% \colorsquare{alizarin}
+% \colorsquare{almond}
+% \colorsquare{amaranth}
+% \colorsquare{amber}
+% \colorsquare{amber(sae/ece)}
+% \colorsquare{americanrose}
+% \colorsquare{amethyst}
+% \colorsquare{anti-flashwhite}
+% \colorsquare{antiquebrass}
+% \colorsquare{antiquefuchsia}
+% \colorsquare{antiquewhite}
+% \colorsquare{ao}
+% \colorsquare{ao(english)}
+% \colorsquare{applegreen}
+% \colorsquare{apricot}
+% \colorsquare{aqua}
+% \colorsquare{aquamarine}
+% \colorsquare{armygreen}
+% \colorsquare{arsenic}
+% \colorsquare{arylideyellow}
+% \colorsquare{ashgrey}
+% \colorsquare{asparagus}
+% \colorsquare{atomictangerine}
+% \colorsquare{auburn}
+% \colorsquare{aureolin}
+% \colorsquare{aurometalsaurus}
+% \colorsquare{awesome}
+% \colorsquare{azure(colorwheel)}
+% \colorsquare{azure(web)(azuremist)}
+% \colorsquare{babyblue}
+% \colorsquare{babyblueeyes}
+% \colorsquare{babypink}
+% \colorsquare{ballblue}
+% \colorsquare{bananamania}
+% \colorsquare{bananayellow}
+% \colorsquare{battleshipgrey}
+% \colorsquare{bazaar}
+% \colorsquare{beaublue}
+% \colorsquare{beaver}
+% \colorsquare{beige}
+% \colorsquare{bisque}
+% \colorsquare{bistre}
+% \colorsquare{bittersweet}
+% \colorsquare{black}
+% \colorsquare{blanchedalmond}
+% \colorsquare{bleudefrance}
+% \colorsquare{blizzardblue}
+% \colorsquare{blond}
+% \colorsquare{blue}
+% \colorsquare{blue(munsell)}
+% \colorsquare{blue(ncs)}
+% \colorsquare{blue(pigment)}
+% \colorsquare{blue(ryb)}
+% \colorsquare{bluebell}
+% \colorsquare{bluegray}
+% \colorsquare{blue-green}
+% \colorsquare{blue-violet}
+% \colorsquare{blush}
+% \colorsquare{bole}
+% \colorsquare{bondiblue}
+% \colorsquare{bostonuniversityred}
+% \colorsquare{brandeisblue}
+% \colorsquare{brass}
+% \colorsquare{brickred}
+% \colorsquare{brightcerulean}
+% \colorsquare{brightgreen}
+% \colorsquare{brightlavender}
+% \colorsquare{brightmaroon}
+% \colorsquare{brightpink}
+% \colorsquare{brightturquoise}
+% \colorsquare{brightube}
+% \colorsquare{brilliantlavender}
+% \colorsquare{brilliantrose}
+% \colorsquare{brinkpink}
+% \colorsquare{britishracinggreen}
+% \colorsquare{bronze}
+% \colorsquare{brown(traditional)}
+% \colorsquare{brown(web)}
+% \colorsquare{bubblegum}
+% \colorsquare{bubbles}
+% \colorsquare{buff}
+% \colorsquare{bulgarianrose}
+% \colorsquare{burgundy}
+% \colorsquare{burlywood}
+% \colorsquare{burntorange}
+% \colorsquare{burntsienna}
+% \colorsquare{burntumber}
+% \colorsquare{byzantine}
+% \colorsquare{byzantium}
+% \colorsquare{cadet}
+% \colorsquare{cadetblue}
+% \colorsquare{cadetgrey}
+% \colorsquare{cadmiumgreen}
+% \colorsquare{cadmiumorange}
+% \colorsquare{cadmiumred}
+% \colorsquare{cadmiumyellow}
+% \colorsquare{calpolypomonagreen}
+% \colorsquare{cambridgeblue}
+% \colorsquare{camel}
+% \colorsquare{camouflagegreen}
+% \colorsquare{canaryyellow}
+% \colorsquare{candyapplered}
+% \colorsquare{candypink}
+% \colorsquare{capri}
+% \colorsquare{caputmortuum}
+% \colorsquare{cardinal}
+% \colorsquare{caribbeangreen}
+% \colorsquare{carmine}
+% \colorsquare{carminepink}
+% \colorsquare{carminered}
+% \colorsquare{carnationpink}
+% \colorsquare{carnelian}
+% \colorsquare{carolinablue}
+% \colorsquare{carrotorange}
+% \colorsquare{ceil}
+% \colorsquare{celadon}
+% \colorsquare{celestialblue}
+% \colorsquare{cerise}
+% \colorsquare{cerisepink}
+% \colorsquare{cerulean}
+% \colorsquare{ceruleanblue}
+% \colorsquare{chamoisee}
+% \colorsquare{champagne}
+% \colorsquare{charcoal}
+% \colorsquare{chartreuse(traditional)}
+% \colorsquare{chartreuse(web)}
+% \colorsquare{cherryblossompink}
+% \colorsquare{chestnut}
+% \colorsquare{chocolate(traditional)}
+% \colorsquare{chocolate(web)}
+% \colorsquare{chromeyellow}
+% \colorsquare{cinereous}
+% \colorsquare{cinnabar}
+% \colorsquare{cinnamon}
+% \colorsquare{citrine}
+% \colorsquare{classicrose}
+% \colorsquare{cobalt}
+% \colorsquare{cocoabrown}
+% \colorsquare{columbiablue}
+% \colorsquare{coolblack}
+% \colorsquare{coolgrey}
+% \colorsquare{copper}
+% \colorsquare{copperrose}
+% \colorsquare{coquelicot}
+% \colorsquare{coral}
+% \colorsquare{coralpink}
+% \colorsquare{coralred}
+% \colorsquare{cordovan}
+% \colorsquare{corn}
+% \colorsquare{cornellred}
+% \colorsquare{cornflowerblue}
+% \colorsquare{cornsilk}
+% \colorsquare{cosmiclatte}
+% \colorsquare{cottoncandy}
+% \colorsquare{cream}
+% \colorsquare{crimson}
+% \colorsquare{crimsonglory}
+% \colorsquare{cyan}
+% \colorsquare{cyan(process)}
+% \colorsquare{daffodil}
+% \colorsquare{dandelion}
+% \colorsquare{darkblue}
+% \colorsquare{darkbrown}
+% \colorsquare{darkbyzantium}
+% \colorsquare{darkcandyapplered}
+% \colorsquare{darkcerulean}
+% \colorsquare{darkchampagne}
+% \colorsquare{darkchestnut}
+% \colorsquare{darkcoral}
+% \colorsquare{darkcyan}
+% \colorsquare{darkelectricblue}
+% \colorsquare{darkgoldenrod}
+% \colorsquare{darkgray}
+% \colorsquare{darkgreen}
+% \colorsquare{darkjunglegreen}
+% \colorsquare{darkkhaki}
+% \colorsquare{darklava}
+% \colorsquare{darklavender}
+% \colorsquare{darkmagenta}
+% \colorsquare{darkmidnightblue}
+% \colorsquare{darkolivegreen}
+% \colorsquare{darkorange}
+% \colorsquare{darkorchid}
+% \colorsquare{darkpastelblue}
+% \colorsquare{darkpastelgreen}
+% \colorsquare{darkpastelpurple}
+% \colorsquare{darkpastelred}
+% \colorsquare{darkpink}
+% \colorsquare{darkpowderblue}
+% \colorsquare{darkraspberry}
+% \colorsquare{darkred}
+% \colorsquare{darksalmon}
+% \colorsquare{darkscarlet}
+% \colorsquare{darkseagreen}
+% \colorsquare{darksienna}
+% \colorsquare{darkslateblue}
+% \colorsquare{darkslategray}
+% \colorsquare{darkspringgreen}
+% \colorsquare{darktan}
+% \colorsquare{darktangerine}
+% \colorsquare{darktaupe}
+% \colorsquare{darkterracotta}
+% \colorsquare{darkturquoise}
+% \colorsquare{darkviolet}
+% \colorsquare{dartmouthgreen}
+% \colorsquare{davy\'sgrey}
+% \colorsquare{debianred}
+% \colorsquare{deepcarmine}
+% \colorsquare{deepcarminepink}
+% \colorsquare{deepcarrotorange}
+% \colorsquare{deepcerise}
+% \colorsquare{deepchampagne}
+% \colorsquare{deepchestnut}
+% \colorsquare{deepfuchsia}
+% \colorsquare{deepjunglegreen}
+% \colorsquare{deeplilac}
+% \colorsquare{deepmagenta}
+% \colorsquare{deeppeach}
+% \colorsquare{deeppink}
+% \colorsquare{deepsaffron}
+% \colorsquare{deepskyblue}
+% \colorsquare{denim}
+% \colorsquare{desert}
+% \colorsquare{desertsand}
+% \colorsquare{dimgray}
+% \colorsquare{dodgerblue}
+% \colorsquare{dogwoodrose}
+% \colorsquare{dollarbill}
+% \colorsquare{drab}
+% \colorsquare{dukeblue}
+% \colorsquare{earthyellow}
+% \colorsquare{ecru}
+% \colorsquare{eggplant}
+% \colorsquare{eggshell}
+% \colorsquare{egyptianblue}
+% \colorsquare{electricblue}
+% \colorsquare{electriccrimson}
+% \colorsquare{electriccyan}
+% \colorsquare{electricgreen}
+% \colorsquare{electricindigo}
+% \colorsquare{electriclavender}
+% \colorsquare{electriclime}
+% \colorsquare{electricpurple}
+% \colorsquare{electricultramarine}
+% \colorsquare{electricviolet}
+% \colorsquare{electricyellow}
+% \colorsquare{emerald}
+% \colorsquare{etonblue}
+% \colorsquare{fallow}
+% \colorsquare{falured}
+% \colorsquare{fandango}
+% \colorsquare{fashionfuchsia}
+% \colorsquare{fawn}
+% \colorsquare{feldgrau}
+% \colorsquare{ferngreen}
+% \colorsquare{ferrarired}
+% \colorsquare{fielddrab}
+% \colorsquare{firebrick}
+% \colorsquare{fireenginered}
+% \colorsquare{flame}
+% \colorsquare{flamingopink}
+% \colorsquare{flavescent}
+% \colorsquare{flax}
+% \colorsquare{floralwhite}
+% \colorsquare{fluorescentorange}
+% \colorsquare{fluorescentpink}
+% \colorsquare{fluorescentyellow}
+% \colorsquare{folly}
+% \colorsquare{forestgreen(traditional)}
+% \colorsquare{forestgreen(web)}
+% \colorsquare{frenchbeige}
+% \colorsquare{frenchblue}
+% \colorsquare{frenchlilac}
+% \colorsquare{frenchrose}
+% \colorsquare{fuchsia}
+% \colorsquare{fuchsiapink}
+% \colorsquare{fulvous}
+% \colorsquare{fuzzywuzzy}
+% \colorsquare{gainsboro}
+% \colorsquare{gamboge}
+% \colorsquare{ghostwhite}
+% \colorsquare{ginger}
+% \colorsquare{glaucous}
+% \colorsquare{gold(metallic)}
+% \colorsquare{gold(web)(golden)}
+% \colorsquare{goldenbrown}
+% \colorsquare{goldenpoppy}
+% \colorsquare{goldenyellow}
+% \colorsquare{goldenrod}
+% \colorsquare{grannysmithapple}
+% \colorsquare{gray}
+% \colorsquare{gray(html/cssgray)}
+% \colorsquare{gray(x11gray)}
+% \colorsquare{gray-asparagus}
+% \colorsquare{green(colorwheel)(x11green)}
+% \colorsquare{green(html/cssgreen)}
+% \colorsquare{green(munsell)}
+% \colorsquare{green(ncs)}
+% \colorsquare{green(pigment)}
+% \colorsquare{green(ryb)}
+% \colorsquare{green-yellow}
+% \colorsquare{grullo}
+% \colorsquare{guppiegreen}
+% \colorsquare{halayaube}
+% \colorsquare{hanblue}
+% \colorsquare{hanpurple}
+% \colorsquare{hansayellow}
+% \colorsquare{harlequin}
+% \colorsquare{harvardcrimson}
+% \colorsquare{harvestgold}
+% \colorsquare{heartgold}
+% \colorsquare{heliotrope}
+% \colorsquare{hollywoodcerise}
+% \colorsquare{honeydew}
+% \colorsquare{hooker\'sgreen}
+% \colorsquare{hotmagenta}
+% \colorsquare{hotpink}
+% \colorsquare{huntergreen}
+% \colorsquare{iceberg}
+% \colorsquare{icterine}
+% \colorsquare{inchworm}
+% \colorsquare{indiagreen}
+% \colorsquare{indianred}
+% \colorsquare{indianyellow}
+% \colorsquare{indigo(dye)}
+% \colorsquare{indigo(web)}
+% \colorsquare{internationalkleinblue}
+% \colorsquare{internationalorange}
+% \colorsquare{iris}
+% \colorsquare{isabelline}
+% \colorsquare{islamicgreen}
+% \colorsquare{ivory}
+% \colorsquare{jade}
+% \colorsquare{jasper}
+% \colorsquare{jazzberryjam}
+% \colorsquare{jonquil}
+% \colorsquare{junebud}
+% \colorsquare{junglegreen}
+% \colorsquare{kellygreen}
+% \colorsquare{khaki(html/css)(khaki)}
+% \colorsquare{khaki(x11)(lightkhaki)}
+% \colorsquare{lasallegreen}
+% \colorsquare{languidlavender}
+% \colorsquare{lapislazuli}
+% \colorsquare{laserlemon}
+% \colorsquare{lava}
+% \colorsquare{lavender(floral)}
+% \colorsquare{lavender(web)}
+% \colorsquare{lavenderblue}
+% \colorsquare{lavenderblush}
+% \colorsquare{lavendergray}
+% \colorsquare{lavenderindigo}
+% \colorsquare{lavendermagenta}
+% \colorsquare{lavendermist}
+% \colorsquare{lavenderpink}
+% \colorsquare{lavenderpurple}
+% \colorsquare{lavenderrose}
+% \colorsquare{lawngreen}
+% \colorsquare{lemon}
+% \colorsquare{lemonchiffon}
+% \colorsquare{lightapricot}
+% \colorsquare{lightblue}
+% \colorsquare{lightbrown}
+% \colorsquare{lightcarminepink}
+% \colorsquare{lightcoral}
+% \colorsquare{lightcornflowerblue}
+% \colorsquare{lightcyan}
+% \colorsquare{lightfuchsiapink}
+% \colorsquare{lightgoldenrodyellow}
+% \colorsquare{lightgray}
+% \colorsquare{lightgreen}
+% \colorsquare{lightkhaki}
+% \colorsquare{lightmauve}
+% \colorsquare{lightpastelpurple}
+% \colorsquare{lightpink}
+% \colorsquare{lightsalmon}
+% \colorsquare{lightsalmonpink}
+% \colorsquare{lightseagreen}
+% \colorsquare{lightskyblue}
+% \colorsquare{lightslategray}
+% \colorsquare{lighttaupe}
+% \colorsquare{lightthulianpink}
+% \colorsquare{lightyellow}
+% \colorsquare{lilac}
+% \colorsquare{lime(colorwheel)}
+% \colorsquare{lime(web)(x11green)}
+% \colorsquare{limegreen}
+% \colorsquare{lincolngreen}
+% \colorsquare{linen}
+% \colorsquare{liver}
+% \colorsquare{lust}
+% \colorsquare{macaroniandcheese}
+% \colorsquare{magenta}
+% \colorsquare{magenta(dye)}
+% \colorsquare{magenta(process)}
+% \colorsquare{magicmint}
+% \colorsquare{magnolia}
+% \colorsquare{mahogany}
+% \colorsquare{maize}
+% \colorsquare{majorelleblue}
+% \colorsquare{malachite}
+% \colorsquare{manatee}
+% \colorsquare{mangotango}
+% \colorsquare{maroon(html/css)}
+% \colorsquare{maroon(x11)}
+% \colorsquare{mauve}
+% \colorsquare{mauvetaupe}
+% \colorsquare{mauvelous}
+% \colorsquare{mayablue}
+% \colorsquare{meatbrown}
+% \colorsquare{mediumaquamarine}
+% \colorsquare{mediumblue}
+% \colorsquare{mediumcandyapplered}
+% \colorsquare{mediumcarmine}
+% \colorsquare{mediumchampagne}
+% \colorsquare{mediumelectricblue}
+% \colorsquare{mediumjunglegreen}
+% \colorsquare{mediumlavendermagenta}
+% \colorsquare{mediumorchid}
+% \colorsquare{mediumpersianblue}
+% \colorsquare{mediumpurple}
+% \colorsquare{mediumred-violet}
+% \colorsquare{mediumseagreen}
+% \colorsquare{mediumslateblue}
+% \colorsquare{mediumspringbud}
+% \colorsquare{mediumspringgreen}
+% \colorsquare{mediumtaupe}
+% \colorsquare{mediumtealblue}
+% \colorsquare{mediumturquoise}
+% \colorsquare{mediumviolet-red}
+% \colorsquare{melon}
+% \colorsquare{midnightblue}
+% \colorsquare{midnightgreen(eaglegreen)}
+% \colorsquare{mikadoyellow}
+% \colorsquare{mint}
+% \colorsquare{mintcream}
+% \colorsquare{mintgreen}
+% \colorsquare{mistyrose}
+% \colorsquare{moccasin}
+% \colorsquare{modebeige}
+% \colorsquare{moonstoneblue}
+% \colorsquare{mordantred19}
+% \colorsquare{mossgreen}
+% \colorsquare{mountainmeadow}
+% \colorsquare{mountbattenpink}
+% \colorsquare{mulberry}
+% \colorsquare{mustard}
+% \colorsquare{myrtle}
+% \colorsquare{msugreen}
+% \colorsquare{nadeshikopink}
+% \colorsquare{napiergreen}
+% \colorsquare{naplesyellow}
+% \colorsquare{navajowhite}
+% \colorsquare{navyblue}
+% \colorsquare{neoncarrot}
+% \colorsquare{neonfuchsia}
+% \colorsquare{neongreen}
+% \colorsquare{non-photoblue}
+% \colorsquare{oceanboatblue}
+% \colorsquare{ochre}
+% \colorsquare{officegreen}
+% \colorsquare{oldgold}
+% \colorsquare{oldlace}
+% \colorsquare{oldlavender}
+% \colorsquare{oldmauve}
+% \colorsquare{oldrose}
+% \colorsquare{olive}
+% \colorsquare{olivedrab(web)(olivedrab3)}
+% \colorsquare{olivedrab7}
+% \colorsquare{olivine}
+% \colorsquare{onyx}
+% \colorsquare{operamauve}
+% \colorsquare{orange(colorwheel)}
+% \colorsquare{orange(ryb)}
+% \colorsquare{orange(webcolor)}
+% \colorsquare{orangepeel}
+% \colorsquare{orange-red}
+% \colorsquare{orchid}
+% \colorsquare{otterbrown}
+% \colorsquare{outerspace}
+% \colorsquare{outrageousorange}
+% \colorsquare{oxfordblue}
+% \colorsquare{oucrimsonred}
+% \colorsquare{pakistangreen}
+% \colorsquare{palatinateblue}
+% \colorsquare{palatinatepurple}
+% \colorsquare{paleaqua}
+% \colorsquare{paleblue}
+% \colorsquare{palebrown}
+% \colorsquare{palecarmine}
+% \colorsquare{palecerulean}
+% \colorsquare{palechestnut}
+% \colorsquare{palecopper}
+% \colorsquare{palecornflowerblue}
+% \colorsquare{palegold}
+% \colorsquare{palegoldenrod}
+% \colorsquare{palegreen}
+% \colorsquare{palemagenta}
+% \colorsquare{palepink}
+% \colorsquare{paleplum}
+% \colorsquare{palered-violet}
+% \colorsquare{palerobineggblue}
+% \colorsquare{palesilver}
+% \colorsquare{palespringbud}
+% \colorsquare{paletaupe}
+% \colorsquare{paleviolet-red}
+% \colorsquare{pansypurple}
+% \colorsquare{papayawhip}
+% \colorsquare{parisgreen}
+% \colorsquare{pastelblue}
+% \colorsquare{pastelbrown}
+% \colorsquare{pastelgray}
+% \colorsquare{pastelgreen}
+% \colorsquare{pastelmagenta}
+% \colorsquare{pastelorange}
+% \colorsquare{pastelpink}
+% \colorsquare{pastelpurple}
+% \colorsquare{pastelred}
+% \colorsquare{pastelviolet}
+% \colorsquare{pastelyellow}
+% \colorsquare{patriarch}
+% \colorsquare{payne\'sgrey}
+% \colorsquare{peach}
+% \colorsquare{peach-orange}
+% \colorsquare{peachpuff}
+% \colorsquare{peach-yellow}
+% \colorsquare{pear}
+% \colorsquare{pearl}
+% \colorsquare{peridot}
+% \colorsquare{periwinkle}
+% \colorsquare{persianblue}
+% \colorsquare{persiangreen}
+% \colorsquare{persianindigo}
+% \colorsquare{persianorange}
+% \colorsquare{peru}
+% \colorsquare{persianpink}
+% \colorsquare{persianplum}
+% \colorsquare{persianred}
+% \colorsquare{persianrose}
+% \colorsquare{persimmon}
+% \colorsquare{phlox}
+% \colorsquare{phthaloblue}
+% \colorsquare{phthalogreen}
+% \colorsquare{piggypink}
+% \colorsquare{pinegreen}
+% \colorsquare{pink}
+% \colorsquare{pink-orange}
+% \colorsquare{pinkpearl}
+% \colorsquare{pinksherbet}
+% \colorsquare{pistachio}
+% \colorsquare{platinum}
+% \colorsquare{plum(traditional)}
+% \colorsquare{plum(web)}
+% \colorsquare{portlandorange}
+% \colorsquare{powderblue(web)}
+% \colorsquare{princetonorange}
+% \colorsquare{prune}
+% \colorsquare{prussianblue}
+% \colorsquare{psychedelicpurple}
+% \colorsquare{puce}
+% \colorsquare{pumpkin}
+% \colorsquare{purple(html/css)}
+% \colorsquare{purple(munsell)}
+% \colorsquare{purple(x11)}
+% \colorsquare{purpleheart}
+% \colorsquare{purplemountainmajesty}
+% \colorsquare{purplepizzazz}
+% \colorsquare{purpletaupe}
+% \colorsquare{radicalred}
+% \colorsquare{raspberry}
+% \colorsquare{raspberryglace}
+% \colorsquare{raspberrypink}
+% \colorsquare{raspberryrose}
+% \colorsquare{rawumber}
+% \colorsquare{razzledazzlerose}
+% \colorsquare{razzmatazz}
+% \colorsquare{red}
+% \colorsquare{red(munsell)}
+% \colorsquare{red(ncs)}
+% \colorsquare{red(pigment)}
+% \colorsquare{red(ryb)}
+% \colorsquare{red-brown}
+% \colorsquare{red-violet}
+% \colorsquare{redwood}
+% \colorsquare{regalia}
+% \colorsquare{richblack}
+% \colorsquare{richbrilliantlavender}
+% \colorsquare{richcarmine}
+% \colorsquare{richelectricblue}
+% \colorsquare{richlavender}
+% \colorsquare{richlilac}
+% \colorsquare{richmaroon}
+% \colorsquare{riflegreen}
+% \colorsquare{robineggblue}
+% \colorsquare{rose}
+% \colorsquare{rosebonbon}
+% \colorsquare{roseebony}
+% \colorsquare{rosegold}
+% \colorsquare{rosemadder}
+% \colorsquare{rosepink}
+% \colorsquare{rosequartz}
+% \colorsquare{rosetaupe}
+% \colorsquare{rosevale}
+% \colorsquare{rosewood}
+% \colorsquare{rossocorsa}
+% \colorsquare{rosybrown}
+% \colorsquare{royalazure}
+% \colorsquare{royalblue(traditional)}
+% \colorsquare{royalblue(web)}
+% \colorsquare{royalfuchsia}
+% \colorsquare{royalpurple}
+% \colorsquare{ruby}
+% \colorsquare{ruddy}
+% \colorsquare{ruddybrown}
+% \colorsquare{ruddypink}
+% \colorsquare{rufous}
+% \colorsquare{russet}
+% \colorsquare{rust}
+% \colorsquare{sacramentostategreen}
+% \colorsquare{saddlebrown}
+% \colorsquare{safetyorange(blazeorange)}
+% \colorsquare{saffron}
+% \colorsquare{st.patrick\'sblue}
+% \colorsquare{salmon}
+% \colorsquare{salmonpink}
+% \colorsquare{sand}
+% \colorsquare{sanddune}
+% \colorsquare{sandstorm}
+% \colorsquare{sandybrown}
+% \colorsquare{sandytaupe}
+% \colorsquare{sangria}
+% \colorsquare{sapgreen}
+% \colorsquare{sapphire}
+% \colorsquare{satinsheengold}
+% \colorsquare{scarlet}
+% \colorsquare{schoolbusyellow}
+% \colorsquare{screamin\'green}
+% \colorsquare{seagreen}
+% \colorsquare{sealbrown}
+% \colorsquare{seashell}
+% \colorsquare{selectiveyellow}
+% \colorsquare{sepia}
+% \colorsquare{shadow}
+% \colorsquare{shamrockgreen}
+% \colorsquare{shockingpink}
+% \colorsquare{sienna}
+% \colorsquare{silver}
+% \colorsquare{sinopia}
+% \colorsquare{skobeloff}
+% \colorsquare{skyblue}
+% \colorsquare{skymagenta}
+% \colorsquare{slateblue}
+% \colorsquare{slategray}
+% \colorsquare{smalt(darkpowderblue)}
+% \colorsquare{smokeytopaz}
+% \colorsquare{smokyblack}
+% \colorsquare{snow}
+% \colorsquare{spirodiscoball}
+% \colorsquare{splashedwhite}
+% \colorsquare{springbud}
+% \colorsquare{springgreen}
+% \colorsquare{steelblue}
+% \colorsquare{stildegrainyellow}
+% \colorsquare{straw}
+% \colorsquare{sunglow}
+% \colorsquare{sunset}
+% \colorsquare{tan}
+% \colorsquare{tangelo}
+% \colorsquare{tangerine}
+% \colorsquare{tangerineyellow}
+% \colorsquare{taupe}
+% \colorsquare{taupegray}
+% \colorsquare{teagreen}
+% \colorsquare{tearose(orange)}
+% \colorsquare{tearose(rose)}
+% \colorsquare{teal}
+% \colorsquare{tealblue}
+% \colorsquare{tealgreen}
+% \colorsquare{tenné(tawny)}
+% \colorsquare{terracotta}
+% \colorsquare{thistle}
+% \colorsquare{thulianpink}
+% \colorsquare{ticklemepink}
+% \colorsquare{tiffanyblue}
+% \colorsquare{tiger\'seye}
+% \colorsquare{timberwolf}
+% \colorsquare{titaniumyellow}
+% \colorsquare{tomato}
+% \colorsquare{toolbox}
+% \colorsquare{tractorred}
+% \colorsquare{trolleygrey}
+% \colorsquare{tropicalrainforest}
+% \colorsquare{trueblue}
+% \colorsquare{tuftsblue}
+% \colorsquare{tumbleweed}
+% \colorsquare{turkishrose}
+% \colorsquare{turquoise}
+% \colorsquare{turquoiseblue}
+% \colorsquare{turquoisegreen}
+% \colorsquare{tuscanred}
+% \colorsquare{twilightlavender}
+% \colorsquare{tyrianpurple}
+% \colorsquare{uablue}
+% \colorsquare{uared}
+% \colorsquare{ube}
+% \colorsquare{uclablue}
+% \colorsquare{uclagold}
+% \colorsquare{ufogreen}
+% \colorsquare{ultramarine}
+% \colorsquare{ultramarineblue}
+% \colorsquare{ultrapink}
+% \colorsquare{umber}
+% \colorsquare{unitednationsblue}
+% \colorsquare{unmellowyellow}
+% \colorsquare{upforestgreen}
+% \colorsquare{upmaroon}
+% \colorsquare{upsdellred}
+% \colorsquare{urobilin}
+% \colorsquare{usccardinal}
+% \colorsquare{uscgold}
+% \colorsquare{utahcrimson}
+% \colorsquare{vanilla}
+% \colorsquare{vegasgold}
+% \colorsquare{venetianred}
+% \colorsquare{verdigris}
+% \colorsquare{vermilion}
+% \colorsquare{veronica}
+% \colorsquare{violet}
+% \colorsquare{violet(colorwheel)}
+% \colorsquare{violet(ryb)}
+% \colorsquare{violet(web)}
+% \colorsquare{viridian}
+% \colorsquare{vividauburn}
+% \colorsquare{vividburgundy}
+% \colorsquare{vividcerise}
+% \colorsquare{vividtangerine}
+% \colorsquare{vividviolet}
+% \colorsquare{warmblack}
+% \colorsquare{wenge}
+% \colorsquare{wheat}
+% \colorsquare{white}
+% \colorsquare{whitesmoke}
+% \colorsquare{wildblueyonder}
+% \colorsquare{wildstrawberry}
+% \colorsquare{wildwatermelon}
+% \colorsquare{wisteria}
+% \colorsquare{xanadu}
+% \colorsquare{yaleblue}
+% \colorsquare{yellow}
+% \colorsquare{yellow(munsell)}
+% \colorsquare{yellow(ncs)}
+% \colorsquare{yellow(process)}
+% \colorsquare{yellow(ryb)}
+% \colorsquare{yellow-green}
+% \colorsquare{zaffre}
+% \colorsquare{zinnwalditebrown}
+% \end{multicols}
+%
+% \section{Acknowledgements}
+% Thanks to Uwe Kern, author of \verb|xcolor|, and Dave Doolin for providing
+% \href{http://latexcolor.com}{latexcolor.com} and giving his permission to use the code shown there to
+% make this package.
+%
+% \section{Implementation}
+%    \begin{macrocode}
+\RequirePackage{xcolor}
 
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
 \definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
@@ -642,7 +1501,7 @@
 \definecolor{satinsheengold}{rgb}{0.8, 0.63, 0.21}
 \definecolor{scarlet}{rgb}{1.0, 0.13, 0.0}
 \definecolor{schoolbusyellow}{rgb}{1.0, 0.85, 0.0}
-\definecolor{screamingreen}{rgb}{0.46, 1.0, 0.44}
+\definecolor{screamin\'green}{rgb}{0.46, 1.0, 0.44}
 \definecolor{seagreen}{rgb}{0.18, 0.55, 0.34}
 \definecolor{sealbrown}{rgb}{0.2, 0.08, 0.08}
 \definecolor{seashell}{rgb}{1.0, 0.96, 0.93}
@@ -690,7 +1549,7 @@
 \definecolor{thulianpink}{rgb}{0.87, 0.44, 0.63}
 \definecolor{ticklemepink}{rgb}{0.99, 0.54, 0.67}
 \definecolor{tiffanyblue}{rgb}{0.04, 0.73, 0.71}
-\definecolor{tigerseye}{rgb}{0.88, 0.55, 0.24}
+\definecolor{tiger\'seye}{rgb}{0.88, 0.55, 0.24}
 \definecolor{timberwolf}{rgb}{0.86, 0.84, 0.82}
 \definecolor{titaniumyellow}{rgb}{0.93, 0.9, 0.0}
 \definecolor{tomato}{rgb}{1.0, 0.39, 0.28}
@@ -762,3 +1621,7 @@
 \definecolor{yellow-green}{rgb}{0.6, 0.8, 0.2}
 \definecolor{zaffre}{rgb}{0.0, 0.08, 0.66}
 \definecolor{zinnwalditebrown}{rgb}{0.17, 0.09, 0.03}
+%    \end{macrocode}
+%
+% \Finale
+\endinput
